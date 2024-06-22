@@ -55,7 +55,7 @@
 	)
   )
 
-(defun load-training-data-from-file (filename)
+(defun load-training-data-from-txt-file (filename)
   (setq content (read-file-line-by-line filename))
 
   (setq input-dimension-rows (length content))

@@ -5,15 +5,21 @@
 (setf *random-state* (make-random-state t))
 
 (defun main ()
-  (setq *eps*  1e-1)
-  (setq *rate* 1e-1)
-  (setq *stop* 1e-2)
+  (setq *stop* 1e-3) ; stop iterating when cost is below this value
 
-  (load-training-data-from-file "./examples/xor.txt")
-  (setq *network-architecture* '(2 1)) ; list of neurons by layer { 2 x 1 }
+  (load-training-data-from-txt-file "./examples/false-belief.txt")
+  (setq *network-architecture* '(3 3)) ; list of neurons by layer { 2 x 1 }
 
   (construct-network)
-  (learn 10000)
-  (check-results))
+
+  ;(learn-naive 100) ; forward learning ("naive approach")
+  ;(check-results)
+
+  (learn-backprop 100000) ; backprop-base learning
+  (check-results)
+
+  ;(check-network-for-custom-input #(1 1 0 0 0 1))
+
+  )
 
 (main)

@@ -9,11 +9,11 @@ $ cat ./examples/xor.txt
 ```
 
 ```lisp
-(load-training-data-from-file "./examples/xor.txt")
+(load-training-data-from-txt-file "./examples/xor.txt")
 (setq *network-architecture* '(2 1)) ; list of neurons by layer { 2 x 1 }
 (construct-network)
 
-(learn 10000) ; e.g. 10000 iterations
+(learn-backprop 2000) ; e.g. 2000 iterations
 (check-results)
 ```
 
@@ -39,4 +39,8 @@ $ ./main.fasl
 ------------------------------------
 ```
 
-No backprop for now.
+# Resources
+
+- Machine Learning in C - [https://www.youtube.com/watch?v=PGSba51aRYU](https://www.youtube.com/watch?v=PGSba51aRYU)
+- What is backpropagation really doing? - [https://www.youtube.com/watch?v=Ilg3gGewQ5U](https://www.youtube.com/watch?v=Ilg3gGewQ5U)
+- Backpropagation - [https://en.wikipedia.org/wiki/Backpropagation](https://en.wikipedia.org/wiki/Backpropagation)
